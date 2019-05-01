@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ultra" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../Train-Time/assets/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Anytime is Train Time</h1>
+            <h3>All aboard!</h3>
+        </div>
+        <div class="container2">
+            <h5>Current Train Schedule</h5>
+            <div class="currentSchedule">
+                    <table class="table" id="schedule">
+                        <thead>
+    
+                            <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>Frequency (min)</th>
+                                <th>Next Arrival</th>
+                                <th>Minutes Away</th>
+                            </tr>
+                        </thead>
+                    </table>
+            </div>
+        </div>
+
+    <div class="container3">
+        <form>
+            <div class="form-group">
+                <h5>Add Train</h5>
+                <label for="train-name">Train Name</label>
+
+                <input type="search" class="form-control" id="train-name">
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="search" class="form-control" id="destination">
+            </div>
+            <div class="form-group">
+                <label for="train-time">First Train Time (HH:mm - military time)</label>
+                <input type="search" class="form-control" id="train-time">
+            </div>
+            <div class="form-group">
+                <label for="frequency">Frequency (min)</label>
+                <input type="search" class="form-control" id="frequency">
+            </div>
+            <button type="search" id="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+        <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../Train-Time/assets/javascript/app.js"></script>
+
+</body>
+
+</html>
