@@ -33,14 +33,14 @@ $(document).ready(function () {
       database.ref().on("child_added", function(snapshot) { 
 
         var sv = snapshot.val();
+        var frequency = sv.frequency;
          // Create the new row
 
         // First Time (pushed back 1 year to make sure it comes before current time)
-        var firstTrainNew = moment(sv.trainTime, "HH:mm").subtract(1, "years");
-        console.log(firstTrainNew);
+        var firstTrainNew = moment(sv.arrival, "HH:mm").subtract(1, "years");
 
         // Difference between the times
-        var diffTime = moment().diff(moment(firstTrainNew), "minutes");
+        var diffTime = moment().diff(firstTrainNew, "minutes");
         console.log("DIFFERENCE IN TIME: " + diffTime);
 
         // Time apart (remainder)
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
         // Next Train
         var nextTrain = moment().add(minutesTillTrain, "minutes");
-        console.log("ARRIVAL TIME: " + moment(nextTrain).format("mm"));
+        console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
     
          console.log(sv.name)
          console.log(sv.destination)
@@ -66,7 +66,7 @@ $(document).ready(function () {
             $("<td>").text(sv.destination),
             $("<td>").text(sv.frequency),
             $("<td>").text(sv.arrival),
-            $("<td>").text(nextTrain)
+            $("<td>").text(minutesTillTrain)
         );
         // Append the new row to the table
         $("#schedule").append(newRow);
