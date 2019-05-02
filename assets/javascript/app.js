@@ -34,6 +34,26 @@ $(document).ready(function () {
 
         var sv = snapshot.val();
          // Create the new row
+
+        // First Time (pushed back 1 year to make sure it comes before current time)
+        var firstTrainNew = moment(sv.trainTime, "HH:mm").subtract(1, "years");
+        console.log(firstTrainNew);
+
+        // Difference between the times
+        var diffTime = moment().diff(moment(firstTrainNew), "minutes");
+        console.log("DIFFERENCE IN TIME: " + diffTime);
+
+        // Time apart (remainder)
+        var remainder = diffTime % frequency;
+        console.log(remainder);
+
+        // Minutes Until Train
+        var minutesTillTrain = frequency - remainder;
+        console.log("MINUTES TILL TRAIN: " + minutesTillTrain);
+
+        // Next Train
+        var nextTrain = moment().add(minutesTillTrain, "minutes");
+        console.log("ARRIVAL TIME: " + moment(nextTrain).format("mm"));
     
          console.log(sv.name)
          console.log(sv.destination)
@@ -46,12 +66,12 @@ $(document).ready(function () {
             $("<td>").text(sv.destination),
             $("<td>").text(sv.frequency),
             $("<td>").text(sv.arrival),
-            $("<td>").text(100),
+            $("<td>").text(nextTrain)
         );
         // Append the new row to the table
         $("#schedule").append(newRow);
     
-    
+      
     }); 
     
 
